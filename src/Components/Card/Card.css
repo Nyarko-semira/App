@@ -1,0 +1,12 @@
+.card{
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    padding: 80px 10px 10px 10px;
+   
+
+}
+
+.ama{
+    display: flex;
+    flex-wrap: wrap;
+}
