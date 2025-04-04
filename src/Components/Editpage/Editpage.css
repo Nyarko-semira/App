@@ -1,0 +1,41 @@
+.Edit-container{
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding:  50px 10px 10px 10px ;
+}
+
+.formed-Container{
+
+    width: 50%!important;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    
+}
+
+
+/* .formed-Container h2{
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    
+
+
+
+} */
+
+
+.form-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3998f8;
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+    /* position: relative; */
+     display: flex;
+     justify-self: center;
+  }

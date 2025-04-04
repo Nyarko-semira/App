@@ -1,24 +1,30 @@
 import React from 'react'
 import "../Sidebar/Sidebar.css"
+import nice from '../../assets/—Pngtree—logo for beauty waves inspiration_5007929.png'
+import { GrView } from "react-icons/gr";
+import { HiOutlineUserAdd } from "react-icons/hi";
+import { FaUserEdit } from "react-icons/fa";
+
 
 const Sidebar = () => {
   return (
     <div className='sidebar'>
         <div className="sidebar-menu">
         <div className="header">
-            <h1>Logo</h1>
+            <img src={nice}  className="logo" alt="" />
         </div>
 
            <div className="list">
-            <a href='#'>
-                <p>View</p>
+            <a href='/'>
+              <GrView />
+              <span>View</span>
             </a>
-            <a href='#'>
-                <p>Add</p>
+            <a href='/Adduser'>
+             <HiOutlineUserAdd/>
+                <span>Add</span>
             </a>
-            <a href='#'>
-                <p>Edit</p>
-            </a>
+       
+            
            </div>
         </div>
         

@@ -1,13 +1,13 @@
 .nav{
-    margin-left: 300px;
-    width: calc(100% - 300px);
+    margin-left: 250px;
+    width: calc(100% - 250px);
     position: fixed;
     z-index: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 10px;
-   
+    /* background-color: rgb(164, 207, 245); */
     background-color: rgb(235, 99, 21);
     
    
@@ -16,21 +16,11 @@
 
 
 
-.nav-menu{
-    display: flex;
-    width: 30%;
-    list-style: none;
-    font-size: 20px;
-    justify-content: space-between;
-    
-    cursor: pointer;
-
-}
 
 
 
 .search-bar{
-    width: 18%;
+    width: 38%;
     background-color: rgb(244, 248, 248);
     height: 40px;
     padding: 0 10px;
@@ -43,7 +33,10 @@
 }
 
 .search-bar input{
+    width: 100%;
     border: none;
     background-color: transparent;
     padding: 5px;
+    outline: 0;
+    border: 0;
 }

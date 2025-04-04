@@ -1,22 +1,28 @@
 import React from 'react'
 import "../Navbar/Navbar.css"
 import { CiSearch } from "react-icons/ci";
+import { Form } from 'react-bootstrap';
+import { useState } from 'react';
 
-const Navbarr = () => {
+const Navbarr = ({handleSearch}) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (e) => {
+    console.log("heloef")
+    setSearchQuery(e.target.value);
+    handleSearch(e.target.value); // Passing the search value up to the parent component
+  };
+
   return (
     <div className='nav'>
 
-      <div></div>
-      <ul className='nav-menu'>
-        <li>Home</li>
-        <li>Explore</li>
-        <li>About</li>
-        <li>News</li>
-      </ul>
 
         <div className="search-bar">
           <CiSearch/>
-          <input type='search' placeholder='Serach  for User'/>
+         <input type='search'value={searchQuery}
+         onChange={handleSearchChange} placeholder='Serach  for User'/> 
+
+          
         </div>
 
     </div>
