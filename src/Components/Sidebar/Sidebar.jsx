@@ -1,6 +1,6 @@
 import React from 'react'
 import "../Sidebar/Sidebar.css"
-import nice from '../../assets/—Pngtree—logo for beauty waves inspiration_5007929.png'
+import nice from '../../assets/medical-modern-flat-template.png'
 import { GrView } from "react-icons/gr";
 import { HiOutlineUserAdd } from "react-icons/hi";
 import { FaUserEdit } from "react-icons/fa";

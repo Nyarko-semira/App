@@ -8,7 +8,6 @@ const Navbarr = ({handleSearch}) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchChange = (e) => {
-    console.log("heloef")
     setSearchQuery(e.target.value);
     handleSearch(e.target.value); // Passing the search value up to the parent component
   };

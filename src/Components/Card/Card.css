@@ -47,7 +47,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    /* justify-content: center; */
     padding: 10px;
     /* background: linear-gradient(to right, #f2f3f5, #cfdef3); */
     background: white;
@@ -55,7 +55,8 @@
   
   .card-content {
     flex: 1 1 300px;
-    max-width: 400px;
+    max-width: 255px;
+  
     /* background: #e0f7fa !important;  */
      background: linear-gradient(to right, #f2f3f5, #cfdef3);
     border: none;
@@ -71,7 +72,7 @@
   }
   
   .card-body {
-    padding: 20px;
+    padding: 10px;
   }
 
   .litle{

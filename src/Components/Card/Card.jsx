@@ -8,9 +8,25 @@ import { FaCity } from "react-icons/fa";
 import { TbZip } from "react-icons/tb";
 import { FaUserTie } from "react-icons/fa6";
 import Navbarr from '../Navbar/Navbarr';
+import Modalpage from '../Modal/Modalpage';
 
 
 const Cardd = ({ users, setUsers , handleSearch}) => {
+     const [show, setShow] = useState(false);
+     const [selectedUser, setSelectedUser] = useState(null);
+  
+     const handleClose = () => {
+      setShow(false);
+      setSelectedUser(null);
+    };
+
+
+     const handleShow = (user) => {
+    setSelectedUser(user);
+    setShow(true);
+  };
+
+ 
 
 
   return (
@@ -21,9 +37,10 @@ const Cardd = ({ users, setUsers , handleSearch}) => {
       <div>
         <h2>Users</h2>
 
-        <div className="card-container">
+        <div className="card-container" >
+      
           {users.map((user) => (
-            <Card style={{ width: '18rem' }} className='card-content' key={user.id}>
+            <Card style={{ width: '18rem' }} className='card-content' key={user.id}  onClick={() => handleShow(user)}>
               <Card.Body>
                 <Card.Title className="mb-4 ">{user.name}</Card.Title>
 
@@ -43,10 +60,22 @@ const Cardd = ({ users, setUsers , handleSearch}) => {
               </Card.Body>
             </Card>
 
+          
+
 
 
           ))}
+
+          
         </div>
+        {selectedUser && (
+          <Modalpage
+            handleClose={handleClose}
+            show={show}
+            setShow={setShow}
+            selectedUser={selectedUser}
+          />
+        )}
         <div>
 
         </div>

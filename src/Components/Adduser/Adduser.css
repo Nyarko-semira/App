@@ -64,6 +64,10 @@
      display: flex;
      justify-self: center;
   }
+
+  .cancel-btn{
+    background-color: rgb(74, 212, 90)!important;
+  }
   
 
   

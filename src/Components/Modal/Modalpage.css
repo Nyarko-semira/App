@@ -1,0 +1,7 @@
+.modal-footer{
+    display: flex !important;
+}
+
+.modal-footer button{
+    width: 30%!important;
+}

@@ -29,13 +29,14 @@ const App = () => {
     setFilteredUsers((prevUsers) => [...prevUsers, newUser]);
   };
 
+
+       //  serach user
+
   const handleSearch = (searchQuery) => {
     if (!searchQuery) {
-      setFilteredUsers(users); // If search is empty, show all users
+      setFilteredUsers(users); 
       return;
     }
-
-        // Filter users based on username only
         const filtered = users.filter(
           (user) =>
             user.username.toLowerCase().includes(searchQuery.toLowerCase()) // Filter by username only
@@ -47,7 +48,7 @@ const App = () => {
     <>
       <Sidebar className="sidebar" />
       {/* <Navbarr className="ama"/> */}
-      <RightContainer   setUsers={setUsers}  handleAddUser={handleAddUser} handleSearch={handleSearch} users={filteredUsers} />
+      <RightContainer   setUsers={setUsers}  handleAddUser={handleAddUser} handleSearch={handleSearch} users={users} filteredUsers={filteredUsers} />
       
   
 
