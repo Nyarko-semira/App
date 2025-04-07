@@ -21,8 +21,8 @@ const EditUser = ({ users, setUsers }) => {
       city: '',
       zipcode: '',
     },
-    company:{
-      name: '', 
+    company: {
+      name: '',
     },
     phone: '',
     website: '',
@@ -46,7 +46,7 @@ const EditUser = ({ users, setUsers }) => {
           [name]: value,
         },
       }));
-    }else if (name === "companyName") {
+    } else if (name === "companyName") {
       setFormData((prev) => ({
         ...prev,
         company: {
@@ -80,96 +80,117 @@ const EditUser = ({ users, setUsers }) => {
 
 
   const handleCancel = () => {
-  navigate("/");
+    navigate("/");
   }
 
   return (
     <div className="Edit-container ">
-       <div className="formed-Container" >
+      <div className="formed-Container" >
         <h2 className='form-title'>Edit User</h2>
-        <Form onSubmit={handleSubmit}>
-         
+        <Form onSubmit={handleSubmit} className='form-wrapp'>
+
           <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
             <Form.Control name="name" value={formData.name} onChange={handleChange} placeholder="Enter name" />
           </Form.Group>
-         
-          
+
+
 
           <Row>
-          <Col>
-          <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
-            <Form.Control name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Enter email" />
-          </Form.Group>
-          </Col>
-          <Col>
-          
-          <Form.Group className="mb-3">
-            <Form.Label>Company Name</Form.Label>
-            <Form.Control name="companyName" value={formData.company.name} onChange={handleChange} placeholder="Company Name" />
-          </Form.Group>
-          </Col>
-          </Row>
-         
-           <Row>
+            <Col xs={12} md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Enter email" />
+              </Form.Group>
+            </Col>
             <Col>
-          <Form.Group className="mb-3">
-            <Form.Label>Username</Form.Label>
-            <Form.Control name="username" value={formData.username} onChange={handleChange} placeholder="Enter username" />
-          </Form.Group>
-          </Col>
-          <Col>
-          <Form.Group className="mb-3">
-            <Form.Label>Street</Form.Label>
-            <Form.Control name="street" value={formData.address.street} onChange={handleChange} placeholder="Street address" />
-          </Form.Group>
-           </Col>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Company Name</Form.Label>
+                <Form.Control name="companyName" value={formData.company.name} onChange={handleChange} placeholder="Company Name" />
+              </Form.Group>
+            </Col>
           </Row>
 
           <Row>
-          <Col>
-          <Form.Group className="mb-3">
-            <Form.Label>City</Form.Label>
-            <Form.Control name="city" value={formData.address.city} onChange={handleChange} placeholder="City" />
-          </Form.Group>
-          </Col>
-          <Col>
-          
-          <Form.Group className="mb-3">
-            <Form.Label>Zip Code</Form.Label>
-            <Form.Control name="zipcode" value={formData.address.zipcode} onChange={handleChange} placeholder="Zip code" />
-          </Form.Group>
-          </Col>
+            <Col xs={12} md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label>Username</Form.Label>
+                <Form.Control name="username" value={formData.username} onChange={handleChange} placeholder="Enter username" />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Street</Form.Label>
+                <Form.Control name="street" value={formData.address.street} onChange={handleChange} placeholder="Street address" />
+              </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={12} md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label>City</Form.Label>
+                <Form.Control name="city" value={formData.address.city} onChange={handleChange} placeholder="City" />
+              </Form.Group>
+            </Col>
+            <Col>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Zip Code</Form.Label>
+                <Form.Control name="zipcode" value={formData.address.zipcode} onChange={handleChange} placeholder="Zip code" />
+              </Form.Group>
+            </Col>
           </Row>
 
 
           <Row>
-          <Col>
-          <Form.Group className="mb-3">
-            <Form.Label>Phone</Form.Label>
-            <Form.Control name="phone" value={formData.phone} onChange={handleChange} placeholder="City" />
-          </Form.Group>
-          </Col>
-          <Col>
-          
-          <Form.Group className="mb-3">
-            <Form.Label>Website</Form.Label>
-            <Form.Control name="website" value={formData.website} onChange={handleChange} placeholder="Zip code" />
-          </Form.Group>
-          </Col>
-          </Row>
+            <Col xs={12} md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control name="phone" value={formData.phone} onChange={handleChange} placeholder="City" />
+              </Form.Group>
+            </Col>
+            <Col>
 
-          <div className="d-flex justify-content-between">
+              <Form.Group className="mb-3">
+                <Form.Label>Website</Form.Label>
+                <Form.Control name="website" value={formData.website} onChange={handleChange} placeholder="Zip code" />
+              </Form.Group>
+            </Col>
+          </Row>
+          {/* 
+          <div className="d-flex justify-content-between edit-btn">
+          <Button variant="primary" onClick={handleCancel}  style={{width: "30%"}}>
+              Cancel
+            </Button>
             <Button className='cancel-btn' type="submit" style={{width: "30%"}} >
               Save Changes
             </Button>
-            <Button variant="primary" onClick={handleCancel}  style={{width: "30%"}}>
-              Cancel
-            </Button>
-          </div>
-        </Form>
+           
+          </div> */}
+
+      <div className="d-flex flex-column flex-md-row align-items-center  gap-3 w-100">
+        <Button 
+          type="button" 
+          style={{ width: "100%" }} 
+          onClick={handleCancel}
+        >
+          Cancel
+        </Button>
+      
+        <Button 
+          className="cancel-btn w-70 w-md-30 w-xs-20"  // Adds margin-top for small screens and margin-left for larger screens
+          type="submit" 
+          style={{ width: "100%" }}
+        >
+          Save Changes
+        </Button>
         </div>
+
+
+        </Form>
+      </div>
     </div>
   );
 };

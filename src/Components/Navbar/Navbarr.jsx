@@ -13,9 +13,9 @@ const Navbarr = ({handleSearch}) => {
   };
 
   return (
+    
     <div className='nav'>
-
-
+        <h2>View users</h2>
         <div className="search-bar">
           <CiSearch/>
          <input type='search'value={searchQuery}
@@ -25,6 +25,7 @@ const Navbarr = ({handleSearch}) => {
         </div>
 
     </div>
+    
 
 
   )

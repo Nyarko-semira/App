@@ -108,4 +108,17 @@
     margin-bottom: 20px;
     color: #6daff0;
   } */
+
+
+  @media screen and (max-width: 474px) {
+    .cardd {
+    margin-left: 90px;
+    width: calc(100% - 90px);
+      
+    
+    
+    }
+    
+   
+  }
   

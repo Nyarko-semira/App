@@ -139,8 +139,8 @@ const Adduser = ({ handleAddUser }) => {
           )}
         </Form.Group>
         <Row>
-          <Col>
-            <Form.Group className="mb-3" controlId="formEmail">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formEmail">
               <Form.Label className="form-label">Email</Form.Label>
               <Form.Control
                 type="email"
@@ -162,8 +162,8 @@ const Adduser = ({ handleAddUser }) => {
               )}
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group className="mb-3" controlId="formEmail">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formEmail">
               <Form.Label className="form-label">Company Name</Form.Label>
               <Form.Control
                 type="text"
@@ -181,8 +181,8 @@ const Adduser = ({ handleAddUser }) => {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Form.Group className="mb-3" controlId="formUsername">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formUsername">
               <Form.Label className="form-label">Username</Form.Label>
               <Form.Control
                 type="text"
@@ -198,8 +198,8 @@ const Adduser = ({ handleAddUser }) => {
               )}
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group className="mb-3" controlId="formStreet">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formStreet">
               <Form.Label className="form-label">Street</Form.Label>
               <Form.Control
                 type="text"
@@ -219,8 +219,8 @@ const Adduser = ({ handleAddUser }) => {
 
 
         <Row>
-          <Col>
-            <Form.Group className="mb-3" controlId="formCity">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formCity">
               <Form.Label className="form-label">City</Form.Label>
               <Form.Control
                 type="text"
@@ -237,8 +237,8 @@ const Adduser = ({ handleAddUser }) => {
             </Form.Group>
           </Col>
 
-          <Col>
-            <Form.Group className="mb-3" controlId="formZip">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formZip">
               <Form.Label className="form-label">Zipcode</Form.Label>
               <Form.Control
                 type="text"
@@ -257,8 +257,8 @@ const Adduser = ({ handleAddUser }) => {
         </Row>
 
         <Row>
-          <Col>
-            <Form.Group className="mb-3" controlId="formUsername">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formUsername">
               <Form.Label className="form-label">Phone</Form.Label>
               <Form.Control
                 type="number"
@@ -275,13 +275,13 @@ const Adduser = ({ handleAddUser }) => {
               />
               {errors.phone && (
                 <Form.Control.Feedback type="invalid">
-                  phone is required
+                  phone is required, 10 digits at least
                 </Form.Control.Feedback>
               )}
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group className="mb-3" controlId="formStreet">
+          <Col xs={12} md={6}>
+            <Form.Group className="mb-2" controlId="formStreet">
               <Form.Label className="form-label">Website</Form.Label>
               <Form.Control
                 type="text"
@@ -301,7 +301,7 @@ const Adduser = ({ handleAddUser }) => {
         {/* <Button variant="primary" type="submit" style={{width:"20%"}} >
     Add User
   </Button> */}
-        <div className="d-flex justify-content-between align-items-center" >
+        {/* <div className="d-flex justify-content-between align-items-center" >
           <Button type="submit" style={{ width: "30%" }} onClick={handleCancel}  >
             Cancel
           </Button>
@@ -309,7 +309,46 @@ const Adduser = ({ handleAddUser }) => {
             Add user
           </Button>
 
-        </div>
+        </div> */}
+
+
+{/* <div className="d-flex justify-content-between align-items-center gap-3">
+  <Button 
+    type="button" 
+    className="w-70 w-md-30 w-xs-20" 
+    onClick={handleCancel}
+  >
+    Cancel
+  </Button>
+
+  <Button 
+    className="cancel-btn w-70 w-md-30 w-xs-20" 
+    type="submit"
+  >
+    Add User
+  </Button>
+</div> */}
+
+<div className="d-flex flex-column flex-md-row align-items-center  gap-3 w-100">
+  <Button 
+    type="button" 
+    style={{ width: "100%" }} 
+    onClick={handleCancel}
+  >
+    Cancel
+  </Button>
+
+  <Button 
+    className="cancel-btn w-70 w-md-30 w-xs-20"  // Adds margin-top for small screens and margin-left for larger screens
+    type="submit" 
+    style={{ width: "100%" }}
+  >
+    Add User
+  </Button>
+</div>
+
+
+
       </Form>
     </div>
   )
