@@ -5,11 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbarr from './Components/Navbar/Navbarr'
 import RightContainer from './Components/RightContainer/RightContainer'
 import { useState, useEffect } from 'react'
+import Login from './Components/Login/Login';
 
 
 
 const App = () => {
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
 
@@ -42,18 +43,40 @@ const App = () => {
             user.username.toLowerCase().includes(searchQuery.toLowerCase()) // Filter by username only
         );
         setFilteredUsers(filtered);
+        console.log("dance")
+      };
+       
+
+
+      // login
+      const handleLogin = () => {
+        setIsLoggedIn(true);
       };
 
   return (
     <>
-      <Sidebar className="sidebar" />
-      {/* <Navbarr className="ama"/> */}
-      <RightContainer   setUsers={setUsers}  handleAddUser={handleAddUser} handleSearch={handleSearch} users={users} filteredUsers={filteredUsers} />
-      
   
+    {!isLoggedIn ? (
+      <Login onLogin={handleLogin} />
+    ) : (
+      <>
+      <Router>
+        <Sidebar className="sidebar"   /> 
+        </Router>
+        <RightContainer
+          setUsers={setUsers}
+          handleAddUser={handleAddUser}
+          handleSearch={handleSearch}
+          users={users}
+          filteredUsers={filteredUsers}
+        >
+          
 
-
-    </>
+          </RightContainer>
+      </>
+    )}
+    
+  </>
   )
 }
 

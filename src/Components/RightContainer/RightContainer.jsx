@@ -8,10 +8,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 
-const RightContainer = ({users, setUsers,handleAddUser, handleSearch}) => {
+const RightContainer = ({users, setUsers,handleAddUser,handleSearch}) => {
   return (
     <div className='right-container'>
-
         <Router>
       <Routes>
         <Route path="/" element={<Cardd users={users}  setUsers={setUsers} handleSearch={handleSearch}/>} />

@@ -6,7 +6,7 @@ import { Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 
-const EditUser = ({ users, setUsers }) => {
+const Editpage = ({ users, setUsers }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const user = users.find((u) => u.id === parseInt(id));//  find specific user from the users based on their id
@@ -195,5 +195,5 @@ const EditUser = ({ users, setUsers }) => {
   );
 };
 
-export default EditUser;
+export default Editpage;
 
