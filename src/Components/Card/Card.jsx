@@ -11,9 +11,22 @@ import Navbarr from '../Navbar/Navbarr';
 import Modalpage from '../Modal/Modalpage';
 
 
-const Cardd = ({ users, setUsers , handleSearch}) => {
+const Cardd = ({ handleSearch}) => {
      const [show, setShow] = useState(false);
      const [selectedUser, setSelectedUser] = useState(null);
+     const [users, setUsers] = useState([]);
+       const [filteredUsers, setFilteredUsers] = useState([]);
+     
+       useEffect(() => {
+         fetch("https://jsonplaceholder.typicode.com/users")
+           .then((response) => response.json())
+           .then((data) => {
+             setUsers(data);
+             setFilteredUsers(data); 
+           })
+           .catch((error) => console.error("Error fetching users:", error));
+       }, []);
+     
   
      const handleClose = () => {
       setShow(false);

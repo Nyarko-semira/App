@@ -71,7 +71,7 @@ const Editpage = ({ users, setUsers }) => {
     setUsers(updatedUsers);
     console.log("Updated Users:", updatedUsers);
 
-    navigate('/');
+    navigate('/cards');
   };
 
 
@@ -80,7 +80,7 @@ const Editpage = ({ users, setUsers }) => {
 
 
   const handleCancel = () => {
-    navigate("/");
+    navigate("/cards");
   }
 
   return (
@@ -93,7 +93,6 @@ const Editpage = ({ users, setUsers }) => {
             <Form.Label>Name</Form.Label>
             <Form.Control name="name" value={formData.name} onChange={handleChange} placeholder="Enter name" />
           </Form.Group>
-
 
 
           <Row>

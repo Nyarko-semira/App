@@ -24,7 +24,7 @@ const Sidebar = () => {
           </div>
 
           <div className="list">
-            <Link to='/'>
+            <Link to='/cards'>
               <GrView />
               <span>View</span>
             </Link>

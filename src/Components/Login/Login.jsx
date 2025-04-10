@@ -7,9 +7,11 @@ import Button from 'react-bootstrap/Button';
 import { Col, Row } from 'react-bootstrap';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({onLogin}) => {
+const Login = () => {
     const Title = "Login"
+    const navigate = useNavigate();
     const [person, setPerson] = useState({
         email: "",
         password: "",
@@ -31,11 +33,12 @@ const Login = ({onLogin}) => {
         reset,
         formState: { errors }
     } = useForm();
+    
 
-    // const Submit = (data) => {
-    //     console.log(data);
-    //     reset();
-    // }
+   const onLogin = () => {
+    navigate("/cards")
+    reset(); // Reset the form after submission
+   }
 
 
     return (

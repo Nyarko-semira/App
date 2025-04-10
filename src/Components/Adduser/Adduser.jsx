@@ -7,16 +7,35 @@ import { Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
+const defaultValues = {
+  id: new Date().getTime(),
+  name: "",
+  email: "",
+  username: "",
+  address: {
+    street: "",
+    city: "",
+    zipcode: ""
+  },
+  website: "",
+  phone: "",
+  company: {
+    name: ""
+  }
+};
 
+const Adduser = () => {
 
-const Adduser = ({ handleAddUser }) => {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm();
+  } = useForm({
+    defaultValues,
+    
+  });
 
   const [newUser, setNewUser] = useState({
     name: '',
@@ -31,6 +50,8 @@ const Adduser = ({ handleAddUser }) => {
   });
 
 
+    
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewUser((prevUser) => ({
@@ -39,79 +60,22 @@ const Adduser = ({ handleAddUser }) => {
     }));
   };
 
+  const handleAddUser = (newUser) => {
+    setUsers((prevUsers) => [...prevUsers, newUser]);
+    setFilteredUsers((prevUsers) => [...prevUsers, newUser]);
+  };
 
-
-
-
-
-  // const handleSubmitt = (e) => {
-
-
-  //     e.preventDefault();
-
-  //     // Create the new user object
-  //     const userObj = {
-  //       id: new Date().getTime(), 
-  //       name: newUser.name,
-  //       email: newUser.email,
-  //       username: newUser.username,
-  //       address: {
-  //         street: newUser.street,
-  //         city: newUser.city,
-  //         zipcode: newUser.zipcode
-  //       },
-  //       website: newUser.website,
-  //       phone: newUser.phone,
-  //      company: {
-  //       name: newUser.name
-  //      }
-
-  //     };
-
-
-  //     handleAddUser(userObj);
-
-
-  //     setNewUser({
-  //       name: '',
-  //       email: '',
-  //       username: '',
-  //       street: '',
-  //       city: '',
-  //       zipcode: '',
-  //       website: '',
-  //       phone: '',
-  //       company: '',
-  //     });
-  //     navigate("/");
-  //   };
 
 
   const onSubmit = (data) => {
-    const userObj = {
-      id: new Date().getTime(),
-      name: data.name,
-      email: data.email,
-      username: data.username,
-      address: {
-        street: data.street,
-        city: data.city,
-        zipcode: data.zipcode
-      },
-      website: data.website,
-      phone: data.phone,
-      company: {
-        name: data.company
-      }
-    };
 
-    handleAddUser(userObj);
-    reset(); // reset form after submit
-    navigate('/');
+    console.log({data});
+    reset(); 
+    navigate('/cards');
   };
 
   const handleCancel = () => {
-    navigate("/");
+    navigate("/cards");
   }
 
 
@@ -127,9 +91,7 @@ const Adduser = ({ handleAddUser }) => {
             type="text"
             name="name"
             placeholder="name"
-            {...register('name', { required: true })}
-            // value={newUser.name}
-            // onChange={handleChange}
+            {...register('name')}
             isInvalid={!!errors.name}
           />
           {errors.name && (
@@ -146,13 +108,7 @@ const Adduser = ({ handleAddUser }) => {
                 type="email"
                 name="email"
                 placeholder="Enter email"
-                {...register('email', {
-                  required: true,
-                  pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: 'Invalid email format'
-                  }
-                })}
+                {...register('email')}
                 isInvalid={!!errors.email}
               />
               {errors.email && (
@@ -167,9 +123,9 @@ const Adduser = ({ handleAddUser }) => {
               <Form.Label className="form-label">Company Name</Form.Label>
               <Form.Control
                 type="text"
-                name="company"
+                name="company.name"
                 placeholder="Enter Company's name"
-                {...register('company', { required: true })}
+                {...register('company.name')}
                 isInvalid={!!errors.company}
               />
               {errors.company && (
@@ -188,7 +144,7 @@ const Adduser = ({ handleAddUser }) => {
                 type="text"
                 name="username"
                 placeholder="Enter username"
-                {...register('username', { required: true })}
+                {...register('username')}
                 isInvalid={!!errors.username}
               />
               {errors.username && (
@@ -203,9 +159,9 @@ const Adduser = ({ handleAddUser }) => {
               <Form.Label className="form-label">Street</Form.Label>
               <Form.Control
                 type="text"
-                name="street"
+                name="address.street"
                 onChange={handleChange}
-                {...register('street', { required: true })}
+                {...register('address.street')}
                 isInvalid={!!errors.street}
               />
               {errors.street && (
@@ -224,9 +180,9 @@ const Adduser = ({ handleAddUser }) => {
               <Form.Label className="form-label">City</Form.Label>
               <Form.Control
                 type="text"
-                name="city"
+                name="address.city"
                 placeholder="City"
-                {...register('city', { required: true })}
+                {...register('address.city')}
                 isInvalid={!!errors.city}
               />
               {errors.city && (
@@ -242,9 +198,9 @@ const Adduser = ({ handleAddUser }) => {
               <Form.Label className="form-label">Zipcode</Form.Label>
               <Form.Control
                 type="text"
-                name="zipcode"
+                name="address.zipcode"
                 placeholder="Zipcode"
-                {...register('zipcode', { required: true })}
+                {...register('address.zipcode')}
                 isInvalid={!!errors.zipcode}
               />
               {errors.zipcode && (
@@ -264,13 +220,7 @@ const Adduser = ({ handleAddUser }) => {
                 type="number"
                 name="phone"
                 placeholder="Enter Phone number"
-                {...register('phone', {
-                  required: true,
-                  minLength: {
-                    value: 10,
-                    message: 'Phone number must be at least 10 digits'
-                  }
-                })}
+                {...register('phone')}
                 isInvalid={!!errors.phone}
               />
               {errors.phone && (
@@ -287,7 +237,7 @@ const Adduser = ({ handleAddUser }) => {
                 type="text"
                 name="website"
                 placeholder="website"
-                {...register('website', { required: true })}
+                {...register('website')}
                 isInvalid={!!errors.website}
               />
               {errors.website && (
@@ -298,37 +248,6 @@ const Adduser = ({ handleAddUser }) => {
             </Form.Group>
           </Col>
         </Row>
-        {/* <Button variant="primary" type="submit" style={{width:"20%"}} >
-    Add User
-  </Button> */}
-        {/* <div className="d-flex justify-content-between align-items-center" >
-          <Button type="submit" style={{ width: "30%" }} onClick={handleCancel}  >
-            Cancel
-          </Button>
-          <Button className='cancel-btn' type="submit" style={{ width: "30%" }} >
-            Add user
-          </Button>
-
-        </div> */}
-
-
-{/* <div className="d-flex justify-content-between align-items-center gap-3">
-  <Button 
-    type="button" 
-    className="w-70 w-md-30 w-xs-20" 
-    onClick={handleCancel}
-  >
-    Cancel
-  </Button>
-
-  <Button 
-    className="cancel-btn w-70 w-md-30 w-xs-20" 
-    type="submit"
-  >
-    Add User
-  </Button>
-</div> */}
-
 <div className="d-flex flex-column flex-md-row align-items-center  gap-3 w-100">
   <Button 
     type="button" 
