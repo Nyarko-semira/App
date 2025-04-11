@@ -14,13 +14,17 @@ import { FaUserTie } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { CgWebsite } from "react-icons/cg";
 import { PiBuildings } from "react-icons/pi";
+import { useContext } from 'react';
+import { UserContext } from '../ContextProvider';
 
 
 
-
-const Modalpage = ({ handleClose, show, setShow, selectedUser }) => {
+const Modalpage = ({handleClose}) => {
+    const {show, setShow} = useContext(UserContext) ;
+    const {selectedUser, setSelectedUser} = useContext(UserContext) ;
     const navigate = useNavigate();
 
+ 
     const handleEdit = () => {
         navigate(`/Editname/${selectedUser.id}`);
     }

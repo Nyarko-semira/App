@@ -4,28 +4,33 @@ import "../../Components/Editpage/Editpage.css"
 import { Form, Button, Container, Card } from 'react-bootstrap';
 import { Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../ContextProvider';
+
+const Editpage = () => {
+  const { users, setUsers} = useContext(UserContext); //  get the users and setUsers from the context
+   const {show, setShow} = useContext(UserContext) ;
 
 
-const Editpage = ({ users, setUsers }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const user = users.find((u) => u.id === parseInt(id));//  find specific user from the users based on their id
 
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    username: '',
-    address: {
-      street: '',
-      city: '',
-      zipcode: '',
-    },
-    company: {
-      name: '',
-    },
-    phone: '',
-    website: '',
+  name: "",
+  email: "",
+  username: "",
+  address: {
+    street: "",
+    city: "",
+    zipcode: ""
+  },
+  website: "",
+  phone: "",
+  company: {
+    name: ""
+  }
   });
 
   useEffect(() => {
@@ -63,25 +68,41 @@ const Editpage = ({ users, setUsers }) => {
   };
 
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const updatedUsers = users.map((u) =>
+  //     u.id === parseInt(id) ? formData : u
+  //   );
+  //   setUsers(updatedUsers);
+  //   console.log("Updated Users:", updatedUsers);
+
+  //   navigate('/cards');
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+  
     const updatedUsers = users.map((u) =>
-      u.id === parseInt(id) ? formData : u
+      u.id === parseInt(id) ? { ...u, ...formData } : u
     );
+  
     setUsers(updatedUsers);
     console.log("Updated Users:", updatedUsers);
-
+    handleCancel(); // Navigate to the cards page after updating
     navigate('/cards');
   };
-
-
-
+  
 
 
 
   const handleCancel = () => {
+    setShow(false);
+   
     navigate("/cards");
   }
+
+
+
 
   return (
     <div className="Edit-container ">
@@ -174,6 +195,7 @@ const Editpage = ({ users, setUsers }) => {
           type="button" 
           style={{ width: "100%" }} 
           onClick={handleCancel}
+          
         >
           Cancel
         </Button>

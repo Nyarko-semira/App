@@ -6,7 +6,7 @@ import { HiOutlineUserAdd } from "react-icons/hi";
 import { FaUserEdit } from "react-icons/fa";
 import logoo from "../../assets/InfoHive (4).png";
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 
 const Sidebar = () => {
@@ -24,12 +24,12 @@ const Sidebar = () => {
           </div>
 
           <div className="list">
-            <Link to='/cards'>
+            <Link to='/cards' className='link'>
               <GrView />
               <span>View</span>
             </Link>
 
-            <Link to='/Adduser'>
+            <Link to='/Adduser' className='link'>
               <HiOutlineUserAdd />
               <span>Add</span>
             </Link>

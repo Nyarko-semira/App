@@ -2,6 +2,7 @@
     margin-left: 250px;
     width: calc(100% - 250px);
     padding:   10px ;
+    padding-top: 65px;
 }
 
 .formed-Container{
@@ -10,7 +11,7 @@
     /* width: 100%;  */
     margin: 0 auto;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    padding: 10px;
+    padding: 7px;
     
 }
 
@@ -18,8 +19,8 @@
 .form-wrapp{
     background-color: #ffffff;
     border-radius: 16px;
-    padding:10px;
-    margin: 10px auto;
+    padding:0px 10px;
+    margin: 0px auto;
     max-width: 600px;
     box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.08);
 }
@@ -35,12 +36,12 @@
 
 
 .form-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: #3998f8;
     text-align: center;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
+    /* margin-bottom: 25px; */
+    /* padding-bottom: 10px; */
     border-bottom: 2px solid #3498db;
     display: inline-block;
     letter-spacing: 1px;

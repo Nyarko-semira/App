@@ -42,7 +42,6 @@ const Login = () => {
 
 
     return (
-
         <div className="container">
             <div className='login-container'>
                 <div className='header'>
@@ -70,7 +69,7 @@ const Login = () => {
 
                     <Row>
                         <Col xs={12} md={12}>
-                            <Form.Group className="mb-5" controlId="formBasicPassword">
+                            <Form.Group className="mb-4" controlId="formBasicPassword">
                                 <Form.Label className='form-label'><span><RiLockPasswordLine /></span>  Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" name='password'
                                     {...register('password', { required: true, minLength: {
@@ -80,7 +79,7 @@ const Login = () => {
 
                                 {errors.password && (
                                     <Form.Control.Feedback type="invalid">
-                                    {errors.password?.message}
+                                        {errors.password.message || 'Password is required'}
                                   </Form.Control.Feedback>
                                 )}
 

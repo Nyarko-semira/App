@@ -62,7 +62,7 @@
    
 }
 
-  .list a:hover{
+  .link:active{
     background-color: rgb(224, 224, 220);
   } 
 

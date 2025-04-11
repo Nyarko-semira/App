@@ -1,9 +1,7 @@
 import React from 'react'
 import "../Main-container/MainContainer.css"
 import Sidebar from '../Sidebar/Sidebar'
-import Cardd from '../Card/Card'
-import { Outlet, Route } from 'react-router-dom'
-import Login from '../Login/Login'
+import { Outlet} from 'react-router-dom'
 import Navbarr from '../Navbar/Navbarr'
 
 

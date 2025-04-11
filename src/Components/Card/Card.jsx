@@ -9,42 +9,37 @@ import { TbZip } from "react-icons/tb";
 import { FaUserTie } from "react-icons/fa6";
 import Navbarr from '../Navbar/Navbarr';
 import Modalpage from '../Modal/Modalpage';
+import { useContext } from 'react';
+import { UserContext } from '../ContextProvider';
 
 
-const Cardd = ({ handleSearch}) => {
-     const [show, setShow] = useState(false);
-     const [selectedUser, setSelectedUser] = useState(null);
-     const [users, setUsers] = useState([]);
-       const [filteredUsers, setFilteredUsers] = useState([]);
-     
-       useEffect(() => {
-         fetch("https://jsonplaceholder.typicode.com/users")
-           .then((response) => response.json())
-           .then((data) => {
-             setUsers(data);
-             setFilteredUsers(data); 
-           })
-           .catch((error) => console.error("Error fetching users:", error));
-       }, []);
+const Cardd = () => {
+     const {show, setShow} = useContext(UserContext) ;
+     const {selectedUser, setSelectedUser} = useContext(UserContext) ;
+     const { users, setUsers} = useContext(UserContext); 
+     const {filteredUsers, setFilteredUsers} =  useContext(UserContext); 
      
   
-     const handleClose = () => {
-      setShow(false);
-      setSelectedUser(null);
-    };
 
 
      const handleShow = (user) => {
-    setSelectedUser(user);
-    setShow(true);
+     setSelectedUser(user);
+     setShow(true);
+    
   };
+
+  const handleClose = () => {
+    setShow(false);
+    setSelectedUser(null);
+
+  };
+
 
  
 
 
   return (
     <>
-    <Navbarr handleSearch={handleSearch}/>
     <div className='cardd'>
   
       <div>
@@ -67,8 +62,8 @@ const Cardd = ({ handleSearch}) => {
 
                 <Card.Text as="div">
                   <div className="mb-2"><FaStreetView />: {user.address.street}</div>
-                  <div className="mb-2"><FaCity />: {user.address.city}</div>
-                  <div className="mb-2"><TbZip />: {user.address.zipcode}</div>
+                  <div className="mb-2"><FaCity />: {user.address?.city}</div>
+                  <div className="mb-2"><TbZip />: {user.address?.zipcode}</div>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -82,11 +77,7 @@ const Cardd = ({ handleSearch}) => {
           
         </div>
         {selectedUser && (
-          <Modalpage
-            handleClose={handleClose}
-            show={show}
-            setShow={setShow}
-            selectedUser={selectedUser}
+          <Modalpage  handleClose={handleClose}   
           />
         )}
         <div>

@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { UserContext } from '../ContextProvider';
+
 
 const defaultValues = {
   id: new Date().getTime(),
@@ -26,53 +29,26 @@ const defaultValues = {
 
 const Adduser = () => {
 
+  const { users, setUsers, setFilteredUsers } = useContext(UserContext); //  get the users and setUsers from the context
+
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm({
-    defaultValues,
-    
-  });
-
-  const [newUser, setNewUser] = useState({
-    name: '',
-    email: '',
-    username: '',
-    street: '',
-    city: '',
-    zipcode: '',
-    website: '',
-    phone: '',
-    company: '',
-  });
-
-
-    
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewUser((prevUser) => ({
-      ...prevUser,
-      [name]: value
-    }));
-  };
-
-  const handleAddUser = (newUser) => {
-    setUsers((prevUsers) => [...prevUsers, newUser]);
-    setFilteredUsers((prevUsers) => [...prevUsers, newUser]);
-  };
-
+  } = useForm({defaultValues});
 
 
   const onSubmit = (data) => {
+      setUsers((prevUsers) => [...prevUsers, data]);
+      setFilteredUsers((prevFiltered) => [...prevFiltered, data]);
+      console.log(data);
+      reset();
+      navigate('/cards');
+    };
 
-    console.log({data});
-    reset(); 
-    navigate('/cards');
-  };
+
 
   const handleCancel = () => {
     navigate("/cards");
@@ -91,7 +67,7 @@ const Adduser = () => {
             type="text"
             name="name"
             placeholder="name"
-            {...register('name')}
+            {...register('name', { required: true })}
             isInvalid={!!errors.name}
           />
           {errors.name && (
@@ -108,7 +84,7 @@ const Adduser = () => {
                 type="email"
                 name="email"
                 placeholder="Enter email"
-                {...register('email')}
+                {...register('email', { required: true })}
                 isInvalid={!!errors.email}
               />
               {errors.email && (
@@ -125,7 +101,7 @@ const Adduser = () => {
                 type="text"
                 name="company.name"
                 placeholder="Enter Company's name"
-                {...register('company.name')}
+                {...register('company.name', { required: true })}
                 isInvalid={!!errors.company}
               />
               {errors.company && (
@@ -144,7 +120,7 @@ const Adduser = () => {
                 type="text"
                 name="username"
                 placeholder="Enter username"
-                {...register('username')}
+                {...register('username', { required: true })}
                 isInvalid={!!errors.username}
               />
               {errors.username && (
@@ -160,11 +136,11 @@ const Adduser = () => {
               <Form.Control
                 type="text"
                 name="address.street"
-                onChange={handleChange}
-                {...register('address.street')}
-                isInvalid={!!errors.street}
+                placeholder="Street address"
+                {...register('address.street', { required: true })}
+                isInvalid={!!errors.address}
               />
-              {errors.street && (
+              {errors.address && (
                 <Form.Control.Feedback type="invalid">
                   street name is required
                 </Form.Control.Feedback>
@@ -182,10 +158,10 @@ const Adduser = () => {
                 type="text"
                 name="address.city"
                 placeholder="City"
-                {...register('address.city')}
-                isInvalid={!!errors.city}
+                {...register('address.city', { required: true })}
+                isInvalid={!!errors.address}
               />
-              {errors.city && (
+              {errors.address && (
                 <Form.Control.Feedback type="invalid">
                   city name is reqired
                 </Form.Control.Feedback>
@@ -200,10 +176,10 @@ const Adduser = () => {
                 type="text"
                 name="address.zipcode"
                 placeholder="Zipcode"
-                {...register('address.zipcode')}
-                isInvalid={!!errors.zipcode}
+                {...register('address.zipcode', { required: true })}
+                isInvalid={!!errors.address}
               />
-              {errors.zipcode && (
+              {errors.address && (
                 <Form.Control.Feedback type="invalid">
                   Zipcode is required
                 </Form.Control.Feedback>
@@ -220,7 +196,7 @@ const Adduser = () => {
                 type="number"
                 name="phone"
                 placeholder="Enter Phone number"
-                {...register('phone')}
+                {...register('phone', { required: true })}
                 isInvalid={!!errors.phone}
               />
               {errors.phone && (
@@ -237,7 +213,7 @@ const Adduser = () => {
                 type="text"
                 name="website"
                 placeholder="website"
-                {...register('website')}
+                {...register('website', { required: true })}
                 isInvalid={!!errors.website}
               />
               {errors.website && (

@@ -7,14 +7,30 @@ import face from "../../assets/face.jpg"
 import download1222 from "../../assets/download122.png"
 import { FaArrowDown } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
+import { useContext } from 'react';
+import { UserContext } from '../ContextProvider';
+import { Link } from 'react-router-dom';
 
-const Navbarr = ({ handleSearch }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
+const Navbarr = () => {
+  const { searchQuery, setSearchQuery} = useContext(UserContext)
+  
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
     handleSearch(e.target.value); // Passing the search value up to the parent component
   };
+
+  const handleSearch = (searchQuery) => {
+    if (!searchQuery) {
+      setFilteredUsers(users); 
+      return;
+    }
+        const filtered = users.filter(
+          (user) =>
+            user.username.toLowerCase().includes(searchQuery.toLowerCase()) // Filter by username only
+        );
+        setFilteredUsers(filtered);
+        console.log(setFilteredUsers)
+      };
 
   return (
 
@@ -46,11 +62,11 @@ const Navbarr = ({ handleSearch }) => {
           {/* profile inFo */}
           <div className="profile-container ">
             <div className="profile-info-wrap">
-              <a href="/" class="profile-menu-link">
+               <Link to='/' className="profile-menu-link">
                 <p>Logout</p>
                 <IoIosLogOut className='logout-icon' />
-
-              </a>
+                </Link>
+            
             </div>
           </div>
         </div>
