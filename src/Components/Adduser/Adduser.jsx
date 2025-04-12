@@ -29,7 +29,8 @@ const defaultValues = {
 
 const Adduser = () => {
 
-  const { users, setUsers, setFilteredUsers } = useContext(UserContext); //  get the users and setUsers from the context
+  const { users, setUsers, setFilteredUsers, setShow } = useContext(UserContext); //  get the users and setUsers from the context
+ 
 
   const navigate = useNavigate();
   const {
@@ -51,6 +52,7 @@ const Adduser = () => {
 
 
   const handleCancel = () => {
+    setShow(false)
     navigate("/cards");
   }
 

@@ -17,11 +17,19 @@
 }
 
 .nav h2{
-    color: rgb(10, 11, 11);
-    font-size: 30px;
+  font-family: "Poppins", sans-serif;
+    color: #333;
+    font-size: 25px;
     font-weight: 600;
     margin-left: 20px;
+  
+
+    
 }
+
+
+
+
 .nav h2:hover{
     color: rgb(31, 28, 28);
     cursor: pointer;
@@ -57,12 +65,15 @@
     width: calc(100% - 90px);
       display: flex;
       flex-direction: column;
+      padding: 5px;
+    
     
     }
 
     .search-bar{
-        width: 100%;
+        width: 80%;
         padding: 0px 20px;
+        margin-bottom: 5px;
     }
 
     .nav h2{

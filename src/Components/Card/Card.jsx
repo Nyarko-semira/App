@@ -11,21 +11,22 @@ import Navbarr from '../Navbar/Navbarr';
 import Modalpage from '../Modal/Modalpage';
 import { useContext } from 'react';
 import { UserContext } from '../ContextProvider';
+import { Spinner } from 'react-bootstrap';
 
 
 const Cardd = () => {
-     const {show, setShow} = useContext(UserContext) ;
-     const {selectedUser, setSelectedUser} = useContext(UserContext) ;
-     const { users, setUsers} = useContext(UserContext); 
-     const {filteredUsers, setFilteredUsers} =  useContext(UserContext); 
-     
-  
+  const { show, setShow } = useContext(UserContext);
+  const { selectedUser, setSelectedUser } = useContext(UserContext);
+  const { users, setUsers } = useContext(UserContext);
+  const { filteredUsers, loading, setLoading } = useContext(UserContext);
 
 
-     const handleShow = (user) => {
-     setSelectedUser(user);
-     setShow(true);
-    
+
+
+  const handleShow = (user) => {
+    setSelectedUser(user);
+    setShow(true);
+
   };
 
   const handleClose = () => {
@@ -35,58 +36,61 @@ const Cardd = () => {
   };
 
 
- 
+
 
 
   return (
     <>
-    <div className='cardd'>
-  
-      <div>
-        <h2>Users</h2>
+      <div className='cardd'>
 
-        <div className="card-container" >
-      
-          {users.map((user) => (
-            <Card style={{ width: '18rem' }} className='card-content' key={user.id}  onClick={() => handleShow(user)}>
-              <Card.Body>
-                <Card.Title className="mb-4 ">{user.name}</Card.Title>
+        <div>
+          <h2>Users</h2>
 
-                <Card.Subtitle className="mb-3 text-muted">
-                  <MdOutlineAttachEmail className='iconed' /> {user.email}
-                </Card.Subtitle>
+          <div className="card-container" >
+            {loading ? (
+                <div className="loader-container">
+                <Spinner animation="border" variant="primary" /> {/* This is the spinner */}
+                <div>Loading users...</div>
+              </div>
+            ) : (
 
-                <Card.Subtitle className="mb-3 text-muted">
-                  <FaUserTie /> {user.username}
-                </Card.Subtitle>
+              filteredUsers.map((user) => (
+                <Card style={{ width: '18rem' }} className='card-content' key={user.id} onClick={() => handleShow(user)}>
+                  <Card.Body>
+                    <Card.Title className="mb-4 ">{user.name}</Card.Title>
 
-                <Card.Text as="div">
-                  <div className="mb-2"><FaStreetView />: {user.address.street}</div>
-                  <div className="mb-2"><FaCity />: {user.address?.city}</div>
-                  <div className="mb-2"><TbZip />: {user.address?.zipcode}</div>
-                </Card.Text>
-              </Card.Body>
-            </Card>
+                    <Card.Subtitle className="mb-3 text-muted">
+                      <MdOutlineAttachEmail className='iconed' /> {user.email}
+                    </Card.Subtitle>
 
-          
+                    <Card.Subtitle className="mb-3 text-muted">
+                      <FaUserTie /> {user.username}
+                    </Card.Subtitle>
+
+                    <Card.Text as="div">
+                      <div className="mb-2"><FaStreetView />: {user.address.street}</div>
+                      <div className="mb-2"><FaCity />: {user.address?.city}</div>
+                      <div className="mb-2"><TbZip />: {user.address?.zipcode}</div>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
 
 
 
-          ))}
 
-          
+
+              ))
+
+            )} </div>
         </div>
         {selectedUser && (
-          <Modalpage  handleClose={handleClose}   
+          <Modalpage handleClose={handleClose}
           />
         )}
         <div>
 
         </div>
       </div>
-
-
-    </div>
     </>
   )
 }

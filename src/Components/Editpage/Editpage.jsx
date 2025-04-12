@@ -10,11 +10,12 @@ import { UserContext } from '../ContextProvider';
 const Editpage = () => {
   const { users, setUsers} = useContext(UserContext); //  get the users and setUsers from the context
    const {show, setShow} = useContext(UserContext) ;
+     const {filteredUsers, setFilteredUsers} =  useContext(UserContext); 
 
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const user = users.find((u) => u.id === parseInt(id));//  find specific user from the users based on their id
+  const user = filteredUsers.find((u) => u.id === parseInt(id));//  find specific user from the users based on their id
 
 
   const [formData, setFormData] = useState({
@@ -82,11 +83,12 @@ const Editpage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    const updatedUsers = users.map((u) =>
+    const updatedUsers = filteredUsers.map((u) =>
       u.id === parseInt(id) ? { ...u, ...formData } : u
     );
   
     setUsers(updatedUsers);
+    setFilteredUsers(updatedUsers)
     console.log("Updated Users:", updatedUsers);
     handleCancel(); // Navigate to the cards page after updating
     navigate('/cards');
