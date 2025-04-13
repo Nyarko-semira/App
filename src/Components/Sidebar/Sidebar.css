@@ -46,6 +46,21 @@
    
 }
 
+.list a:hover{
+    background-color: rgb(18, 93, 110);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.list a:active{
+    background-color: rgb(224, 224, 220);
+    color: rgb(31, 28, 28);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
 .list a{
     width: 100%;
     background-color: none;
@@ -61,10 +76,16 @@
     font-weight: 500;
    
 }
+.list span{
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+}
 
   .link:active{
     background-color: rgb(224, 224, 220);
   } 
+
+
 
 
   @media screen and (max-width: 768px) {
